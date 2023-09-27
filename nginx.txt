@@ -1,0 +1,19 @@
+
+/etc/nginx/sites-available/django.conf
+
+server {
+    listen 80;
+    server_name 54.229.36.243;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        alias /home/ubuntu/voting_site/static/;
+    }
+    location /media/ {
+        alias /home/ubuntu/voting_site/media/;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/voting_site/app.sock;
+    }
+}
+

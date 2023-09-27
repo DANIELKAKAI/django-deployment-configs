@@ -1,0 +1,18 @@
+/etc/supervisor/conf.d/gunicorn.conf
+
+## workers = (2*cpu) + 1
+
+[program:gunicorn]
+command=/home/ubuntu/env/bin/gunicorn --workers 5 --bind unix:/home/ubuntu/voting_site/app.sock  voting_site.wsgi:application
+directory=/home/ubuntu/voting_site
+user=ubuntu
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/gunicorn/gunicorn.out.log
+stdout_logfile=/var/log/gunicorn/gunicorn.err.log
+
+[group:guni]
+programs:gunicorn
+
+
+$sudo service nginx restart

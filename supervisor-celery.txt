@@ -1,0 +1,15 @@
+/etc/supervisor/conf.d/celery.conf
+
+[program:celery]
+command=/home/ubuntu/env/bin/celery -A voting_site worker -l info
+directory=/home/ubuntu/voting_site
+user=ubuntu
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/celery/celery.out.log
+stdout_logfile=/var/log/celery/celery.err.log
+
+
+$ supervisorctl reread
+$ supervisorctl update
+$ supervisorctl status
