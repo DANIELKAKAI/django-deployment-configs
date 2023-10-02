@@ -1,0 +1,52 @@
+link: https://realpython.com/django-nginx-gunicorn/
+
+$ sudo apt update
+$ sudo apt install certbot python3-certbot-nginx
+
+$ sudo certbot --nginx --rsa-key-size 4096 --no-redirect
+
+$ sudo ufw allow 443
+
+
+server {
+  listen 80; 
+  server_name voting-backend.uda.ke; 
+  return 307 https://$host$request_uri;
+}
+
+server {
+    location = /favicon.ico { access_log off; log_not_found off; } 
+    location /static/ { 
+        alias /home/ubuntu/voting_site/static/; 
+    } 
+    location /media/ { 
+        alias /home/ubuntu/voting_site/media/; 
+    } 
+    location / { 
+        include proxy_params; 
+        proxy_pass http://unix:/home/ubuntu/voting_site/app.sock; 
+    } 
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/voting-backend.uda.ke/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/voting-backend.uda.ke/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+$ sudo systemctl reload nginx
+
+// auto renewal
+
+
+sudo /usr/bin/certbot renew --dry-run
+
+$ sudo crontab -e
+
+paste this:
+0 0 */89 * * sudo /usr/bin/certbot renew --quiet
+
+sudo less /var/log/letsencrypt/letsencrypt.log
+
+
