@@ -1,10 +1,12 @@
 link: https://medium.com/hackernoon/deploy-django-app-with-nginx-gunicorn-postgresql-supervisor-9c6d556a25ac#:~:text=Configuring%20Gunicorn%20with%20Supervisor,-Now%20once%20the&text=Make%20sure%20to%20replace%20app,to%20stop%20gunicorn%20from%20running.
 
+update /etc/nginx/nginx.conf to have root user on line 1
+
 /etc/nginx/sites-available/django.conf
 
 server {
     listen 80;
-    server_name 54.229.36.243;
+    server_name 54.216.106.246;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         alias /home/ubuntu/voting_site/static/;
