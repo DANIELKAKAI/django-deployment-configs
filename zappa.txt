@@ -1,0 +1,6 @@
+https://blog.logrocket.com/zappa-and-aws-lambda-for-serverless-django/
+
+https://esketchers.com/deploying-django-apps-in-serverless-using-zappa/
+
+requirements.txt
+requests==2.28.2
