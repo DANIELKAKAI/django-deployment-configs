@@ -6,7 +6,7 @@ update /etc/nginx/nginx.conf to have root user on line 1
 
 server {
     listen 80;
-    server_name 54.216.106.246;
+    server_name ec2-51-20-29-81.eu-north-1.compute.amazonaws.com;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         alias /home/ubuntu/voting_site/static/;
