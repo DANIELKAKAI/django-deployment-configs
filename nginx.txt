@@ -1,3 +1,4 @@
+link: https://www.youtube.com/watch?v=7O1H9kr1CsA
 link: https://medium.com/hackernoon/deploy-django-app-with-nginx-gunicorn-postgresql-supervisor-9c6d556a25ac#:~:text=Configuring%20Gunicorn%20with%20Supervisor,-Now%20once%20the&text=Make%20sure%20to%20replace%20app,to%20stop%20gunicorn%20from%20running.
 
 update /etc/nginx/nginx.conf to have root user on line 1
