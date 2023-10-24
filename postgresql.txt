@@ -1,0 +1,13 @@
+sudo apt install postgresql
+
+sudo systemctl start postgresql
+
+sudo systemctl enable postgresql
+
+sudo -i -u postgres
+psql
+ALTER USER postgres PASSWORD 'newpassword';
+
+https://stackoverflow.com/questions/69676009/psql-error-connection-to-server-on-socket-var-run-postgresql-s-pgsql-5432
+
+
