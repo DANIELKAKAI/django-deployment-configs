@@ -4,3 +4,35 @@ https://esketchers.com/deploying-django-apps-in-serverless-using-zappa/
 
 requirements.txt
 requests==2.28.2
+
+s3 settings
+1. create bucket for static files
+2. Allow public access
+3. Add this bucket policy
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::your-bucket-name/*"
+        }
+    ]
+}
+
+4. django settings for bucket
+
+AWS_ACCESS_KEY_ID = XXXXXXXXXXXXXXX
+AWS_SECRET_ACCESS_KEY = XXXXXXXXXXXXXXXXXXXXXXXXXXx
+AWS_STORAGE_BUCKET_NAME = 'zappa-s3'
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
+
+STATICFILES_STORAGE = 'mysite.storage.StaticStorage'
+STATIC_URL = 'https://' + AWS_S3_CUSTOM_DOMAIN + '/static/'
+
+
+
