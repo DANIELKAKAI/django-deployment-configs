@@ -1,0 +1,3 @@
+./manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+
+./manage.py loaddata db.json
