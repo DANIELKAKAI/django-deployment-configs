@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve monitoring web app
+After=network.target
+
+[Service]
+User=tree
+Group=tree
+WorkingDirectory=/home/tree/code/sog/monitor/monitor_site
+ExecStart=/home/tree/code/env/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 monitor_site.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
