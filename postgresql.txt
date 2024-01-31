@@ -10,4 +10,18 @@ ALTER USER postgres PASSWORD 'newpassword';
 
 https://stackoverflow.com/questions/69676009/psql-error-connection-to-server-on-socket-var-run-postgresql-s-pgsql-5432
 
+### create a passwordless user
+psql
+create user daniel;
+sudo nano /etc/postgresql/<version>/main/pg_hba.conf
+
+add this line to the file
+local   all             daniel                                trust
+
+
+sudo systemctl restart postgresql
+
+
+
+
 
