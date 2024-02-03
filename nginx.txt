@@ -21,3 +21,12 @@ server {
     }
 }
 
+
+## file size limit setting
+location / {
+        include proxy_params;
+        proxy_pass http://unix:/root/bursary-site/app.sock;
+	    client_max_body_size 50M;
+}
+
+
