@@ -1,0 +1,2 @@
+
+celery -A voting_site inspect reserved
