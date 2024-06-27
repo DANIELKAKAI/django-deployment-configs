@@ -1,0 +1,16 @@
+from django.db import transaction
+from myapp.models import MyModel
+
+# Assume data_list is a list of dictionaries containing data for MyModel
+data_list = [
+    {'field1': 'value1', 'field2': 'value2'},
+    {'field1': 'value3', 'field2': 'value4'},
+    # Add more data as needed
+]
+
+# Use a transaction for bulk create
+with transaction.atomic():
+    MyModel.objects.bulk_create(
+        [MyModel(**data) for data in data_list],
+        ignore_conflicts=True
+    )
