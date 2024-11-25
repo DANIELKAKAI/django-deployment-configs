@@ -9,6 +9,7 @@ s3 settings
 1. create bucket for static files
 2. Allow public access
 3. Add this bucket policy
+4. Go to bucket permisions and enable ACl under bucket ownership to allow other user uploads
 
 {
     "Version": "2012-10-17",
