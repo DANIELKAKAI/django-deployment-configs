@@ -9,9 +9,10 @@ $ sudo ufw allow 443
 
 
 server {
-  listen 80; 
-  server_name voting-backend.uda.ke; 
-  return 307 https://$host$request_uri;
+    listen 80;
+    server_name ebursarykenya.co.ke www.ebursarykenya.co.ke;
+
+    return 301 https://ebursarykenya.co.ke$request_uri;
 }
 
 server {
